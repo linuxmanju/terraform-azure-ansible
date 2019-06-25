@@ -28,7 +28,7 @@ variable "repeatcount" {
 
 variable "open_tcp_ports" {
     type = "list"
-    default = [22,8080]
+    default = [22,8080,80,443]
   
 }
 

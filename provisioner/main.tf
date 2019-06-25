@@ -82,8 +82,18 @@ resource "azurerm_virtual_machine" "companynews_web_vm" {
 
 
 data "template_file" "init" {
-  template = "${file("../ConfigManagement/site.yml")}"
+  template = "${file("./site.tpl")}"
   vars = {
     admin_user = "${var.vm_admin_user}"
+  }
+}
+
+resource "null_resource" "run" {
+  triggers {
+        build_number = "${timestamp()}"
+    }
+
+  provisioner "local-exec" {
+    command = "echo \"${data.template_file.init.rendered}\" > ../ConfigManagement/site.yml"
   }
 }
