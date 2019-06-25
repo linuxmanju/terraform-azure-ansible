@@ -21,3 +21,7 @@ output "app_nic_ids" {
 output "web_nic_ids" {
   value = "${azurerm_network_interface.companynews_web_nic.*.id}"
 }
+
+output "app_private_ip" {
+   value = "${azurerm_network_interface.companynews_app_nic.*.private_ip_address}"
+}

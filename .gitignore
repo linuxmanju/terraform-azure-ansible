@@ -2,3 +2,6 @@ provisioner/terraform.tfstate
 provisioner/terraform.tfstate.backup
 provisioner/.terraform
 ansible/inventory.ip_list
+terraform.tfstate
+provisioner/ansible_secrtes
+provisioner/invento*

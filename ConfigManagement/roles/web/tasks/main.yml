@@ -1,0 +1,35 @@
+---
+
+- name: Wait for ssh as Azure takes time
+  wait_for:
+    port: 22
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+
+- name: Source Variables from base role path 
+  include_vars:
+   file: common_vars.yml
+
+
+- name: Install Common Packages
+  package:
+      state: present
+      name: "{{ item }}"
+      use: auto
+  with_items:
+   - "{{ web_packages }}"
+  notify: restart services
+
+- name: Copy Config templates
+  template:
+      dest: "{{ item.dest }}" 
+      src: "{{ item.src }}"
+  with_items:
+  -  { src : "default.j2" , dest: "/etc/nginx/sites-enabled/default" }
+  notify: restart services
+
+- name: Copy static files/folders
+  unarchive:
+      src: static.zip
+      dest: /var/www/html/
+      group: www-data
+      mode: 0755

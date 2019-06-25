@@ -1,0 +1,19 @@
+web_packages:
+ - nginx-full
+ - unzip
+
+app_packages:
+ - tomcat8
+ - openjdk-8-jre-headless
+
+web_services:
+ - nginx
+ 
+app_services:
+ - tomcat8
+
+app_file_paths:
+ - { 'src':'companyNews.war', 'dest':'/var/lib/tomcat8/webapps/'}
+
+web_file_paths:
+ - { 'src':'static.zip', 'dest':'/var/www/html/'}

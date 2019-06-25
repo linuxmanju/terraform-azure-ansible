@@ -1,0 +1,27 @@
+---
+packages:
+ - openjdk-8-jre-headless
+ - collectd
+ - mysql-server
+ - python-pymysql
+ - python-mysqldb
+ 
+
+
+
+services_to_restart:
+ - collectd
+ - mysql
+ 
+
+templates:
+ - { "src" : "zk.j2", "dest" : "/etc/mesos/zk" }
+ - { "src" : "id.j2", "dest" : "/etc/zookeeper/conf/myid" }
+ - { "src" : "zoo.cfg.j2" , "dest" : "/etc/zookeeper/conf/zoo.cfg" }
+ - { "src" : "quoram.j2" , "dest" : "/etc/mesos-master/quorum" }
+ - { "src" : "ip.j2" , "dest" : "/etc/mesos-master/ip" }
+ - { "src" : "ip.j2" , "dest" : "/etc/mesos-master/hostname" }
+ - { "src" : "ip.j2" , "dest" : "/etc/marathon/conf/hostname" }
+ - { "src" : "zk_marathon.j2" , "dest" : "/etc/marathon/conf/zk" }
+ - { "src" : "marathon_defaults" , "dest" : "/etc/default/marathon" }
+ - { "src" : "containerizers.j2" , "dest" : "/etc/mesos-slave/containerizers" }

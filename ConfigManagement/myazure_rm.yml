@@ -1,0 +1,8 @@
+plugin: azure_rm
+include_vm_resource_groups:
+- company_news_rg
+auth_source: auto
+
+conditional_groups:
+ app_hosts: "'vm-app' in name"
+ web_hosts: "'vm-web' in name"

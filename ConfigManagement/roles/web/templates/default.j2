@@ -1,0 +1,16 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+        
+        location ~ ^/(images|styles)/ {
+	 root /var/www/html/static ;
+   }
+ 
+	location / {
+		try_files $uri $uri/ =404;
+                proxy_pass http://{{hostvars[groups['app_hosts'][0]]['ansible_eth0']['ipv4']['address']}}:8080/companyNews/;
+	}
+}

@@ -1,0 +1,39 @@
+---
+
+- name: Wait for ssh as Azure takes time
+  wait_for:
+    port: 22
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+
+- name: Source Variables from base role path 
+  include_vars:
+   file: common_vars.yml
+
+
+- name: Install Common Packages
+  package:
+      state: present
+      name: "{{ item }}"
+      use: auto
+  with_items:
+   - "{{ app_packages }}"
+  notify: restart services
+
+- name: Create prevayler prereq dir
+  file:
+      path: /Users/dcameron/persistence/
+      recurse: yes
+      group: tomcat8
+      state: directory
+      mode: 0755
+      owner: tomcat8
+
+- name: Deploy war file to webroot
+  copy:
+      dest: "{{ item.dest }}" 
+      src: "{{ item.src }}" 
+      group: tomcat8 
+      owner: tomcat8
+  with_items:
+  - "{{ app_file_paths }}"
+      
