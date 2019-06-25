@@ -1,18 +1,19 @@
 ---
 - hosts: all
-  remote_user: ${admin_user}
+  remote_user: sysadmin
   become: true
   roles:
     - common
 
 - hosts: web_hosts
-  remote_user: ${admin_user}
+  remote_user: sysadmin
   become: true
   roles:
    - web
 
 - hosts: app_hosts
-  remote_user: ${admin_user}
+  remote_user: sysadmin
   become: true
   roles:
    - app
+

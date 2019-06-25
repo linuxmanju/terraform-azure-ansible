@@ -1,9 +1,2 @@
 ---
-# handlers file for web 
-
-- name: restart services
-  service:
-      name: "{{ item }}"
-      enabled: true
-      state: restarted
-  with_items: "{{ services }}"
+# handlers file for common 

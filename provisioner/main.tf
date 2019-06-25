@@ -89,10 +89,6 @@ data "template_file" "init" {
 }
 
 resource "null_resource" "run" {
-  triggers {
-        build_number = "${timestamp()}"
-    }
-
   provisioner "local-exec" {
     command = "echo \"${data.template_file.init.rendered}\" > ../ConfigManagement/site.yml"
   }

@@ -4,6 +4,11 @@ server {
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
+
+    listen 443 ssl; 
+        
+    ssl_certificate /etc/ssl/CompanyNews.com.crt;
+    ssl_certificate_key /etc/ssl/CompanyNews.com.pem;
         
         location ~ ^/(images|styles)/ {
 	 root /var/www/html/static ;

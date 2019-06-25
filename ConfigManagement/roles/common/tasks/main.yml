@@ -6,5 +6,8 @@
     host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
 
 
-- name: Debug
-  debug: "{{hostvars[groups['app_hosts'][0]]['ansible_eth0']['ipv4']['address']}}"
+- name: Install NTP for time sync
+  package:
+      state: present
+      name: ntp
+      use: auto

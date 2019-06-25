@@ -1,6 +1,7 @@
 web_packages:
  - nginx-full
  - unzip
+ - python-openssl
 
 app_packages:
  - tomcat8
@@ -17,3 +18,6 @@ app_file_paths:
 
 web_file_paths:
  - { 'src':'static.zip', 'dest':'/var/www/html/'}
+
+cert_details:
+ - {'cert': '/etc/ssl/CompanyNews.com.crt','pem':'/etc/ssl/CompanyNews.com.pem','csr':'/etc/ssl/CompanyNews.com.csr','subject':'CompanyNews.com'}

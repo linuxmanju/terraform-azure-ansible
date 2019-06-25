@@ -19,6 +19,32 @@
    - "{{ web_packages }}"
   notify: restart services
 
+- name: Generate private key
+  openssl_privatekey:
+   path: "{{ item.pem }}"
+  with_items:
+   - "{{ cert_details }}"
+
+- name: genertate csr
+  openssl_csr:
+   path: "{{ item.csr }}"
+   privatekey_path: "{{ item.pem }}"
+   common_name: "{{inventory_hostname}}"
+  with_items:
+   - "{{ cert_details }}"
+
+- name: Generate a Self Signed OpenSSL certificate
+  openssl_certificate:
+   path: "{{ item.cert }}"
+   privatekey_path: "{{ item.pem }}"
+   csr_path: "{{ item.csr }}"
+   provider: selfsigned
+   subject:
+    CN: "CompanyNews.com"
+  with_items:
+    - "{{ cert_details }}"
+
+
 - name: Copy Config templates
   template:
       dest: "{{ item.dest }}" 
