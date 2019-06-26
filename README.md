@@ -9,6 +9,23 @@ This is an example integrated Provisioning + Config Management and Deployment fl
 * Tested in Ubuntu Latest and OSx
 * Azure account with service principle configured
 
+## Fastest way to get going..
+
+Docker image which I have built has all the dependencies installed ( terraform, ansible , az cli.. etc).. all you need to do is do below..
+
+```
+docker run -ti linuxmanju/companynews ./entry.sh
+```
+
+That should clone the git repo master and land you straight in the cloned folder inside the docker container. Inside the container terminal run..
+
+```
+./deployapp.sh -t|--azure_tenant_id <AZURE_TENANT_ID> -c|--azure_client_id <Azure Client ID> -s|--azure_secret <AZURE_SECRET> -a|--azure_subscription_id <AZURE_SUBSCRIPTION_ID>
+```
+
+If you want to get your hand dirty setting up everything from scratch, continue below.
+
+
 ## Example installation of above dependeicnes on Ubuntu..
 
 Easiest way to get started is to pull docker container. If not skip the below code and move to the common section.

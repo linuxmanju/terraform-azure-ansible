@@ -2,7 +2,7 @@ resource "azurerm_virtual_machine" "companynews_app_vm" {
      name                  = "vm-app-${var.prefix}-${count.index}"
      location              = "${var.location}"
      resource_group_name   = "${var.resource_group_name}"
-     network_interface_ids = ["${module.networking.app_nic_ids}"]
+     network_interface_ids = ["${module.networking.app_nic_ids[count.index]}"]
      vm_size               = "${var.vm_size}"
      availability_set_id  = "${module.base.availibilty_set_id}"
 
@@ -43,7 +43,7 @@ resource "azurerm_virtual_machine" "companynews_web_vm" {
      name                  = "vm-web-${var.prefix}-${count.index}"
      location              = "${var.location}"
      resource_group_name   = "${var.resource_group_name}"
-     network_interface_ids = ["${module.networking.web_nic_ids}"]
+     network_interface_ids = ["${module.networking.web_nic_ids[count.index]}"]
      vm_size               = "${var.vm_size}"
      availability_set_id  = "${module.base.availibilty_set_id}"
 
