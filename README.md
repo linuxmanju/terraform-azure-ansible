@@ -61,7 +61,7 @@ An example run..
 
 Once the run is complete.. You should be able to access Application on port 443 of webvm
 
-
+```
 git clone https://github.com/linuxmanju/terraform-azure-ansible.git
 cd terraform-azure-ansible
 ```
