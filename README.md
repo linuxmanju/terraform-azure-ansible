@@ -15,6 +15,24 @@ This is an example integrated Provisioning + Config Management and Deployment fl
 * Separate resource count for app and web is ideal ( currently repeat count = 4 deploys 4 app and 4 web )
 * A Load balancer resource would be nice to have
 * JAVA GC parameters and Xmx and Xms values should be dynamically calculated and populated as a part of config management ( for eg.. on cloud VM with 4 GB should have Xmx to be set to 3 Gigs and 8GB should be set to 6.5 Gigs)
+* Nginx should be configured with backend pool ( for better load balancing config )
+
+
+## Fastest way to get going..
+
+Docker image which I have built has all the dependencies installed ( terraform, ansible , az cli.. etc).. all you need to do is do below..
+
+```
+docker run -ti linuxmanju/companynews ./entry.sh
+```
+
+That should clone the git repo from  master branch and land you straight in the cloned folder inside the docker container. Inside the container terminal run..
+
+```
+./deployapp.sh -t|--azure_tenant_id <AZURE_TENANT_ID> -c|--azure_client_id <Azure Client ID> -s|--azure_secret <AZURE_SECRET> -a|--azure_subscription_id <AZURE_SUBSCRIPTION_ID>
+```
+
+If you want to get your hand dirty setting up everything from scratch, continue below.
 
 
 ## Dependencies
@@ -24,9 +42,6 @@ This is an example integrated Provisioning + Config Management and Deployment fl
 * Tested in Ubuntu Latest and OSx
 * Azure account with service principle configured
 
-
-
-* SG is shared
 
 ## Fastest way to get going..
 
