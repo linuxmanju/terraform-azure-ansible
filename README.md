@@ -59,13 +59,6 @@ An example run..
 ./deployapp.sh -t ddddddddddddd -c ccccccccccccccccc -s 8dsssssssss -a 2fffffffff
 ```
 
-Once the run is complete.. You should be able to access Application on port 443 of webvm
-
-```
-git clone https://github.com/linuxmanju/terraform-azure-ansible.git
-cd terraform-azure-ansible
-```
-
-
+Once the run is complete.. You should be able to access Application on port 443 of webvm public IP.
 
 

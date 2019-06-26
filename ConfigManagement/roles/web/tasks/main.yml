@@ -59,3 +59,7 @@
       dest: /var/www/html/
       group: www-data
       mode: 0755
+
+- name: Print out URL for access
+  debug: 
+   msg: "All done... Please visit https://{{ansible_default_ipv4.address}}... to access"
