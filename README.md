@@ -17,7 +17,7 @@ Docker image which I have built has all the dependencies installed ( terraform, 
 docker run -ti linuxmanju/companynews ./entry.sh
 ```
 
-That should clone the git repo master and land you straight in the cloned folder inside the docker container. Inside the container terminal run..
+That should clone the git repo from  master branch and land you straight in the cloned folder inside the docker container. Inside the container terminal run..
 
 ```
 ./deployapp.sh -t|--azure_tenant_id <AZURE_TENANT_ID> -c|--azure_client_id <Azure Client ID> -s|--azure_secret <AZURE_SECRET> -a|--azure_subscription_id <AZURE_SUBSCRIPTION_ID>
