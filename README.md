@@ -34,6 +34,7 @@ Create service principal in azure.. Easy way is to do az login and execute below
 az ad sp create-for-rbac --name ServicePrincipalName
 ```
 
+
 Note down the output and save it securely.
 
 Back to our docker container/Ubuntu machine
@@ -64,11 +65,6 @@ Once the run is complete.. You should be able to access Application on port 443 
 git clone https://github.com/linuxmanju/terraform-azure-ansible.git
 cd terraform-azure-ansible
 ```
-
-
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-
 
 
 
