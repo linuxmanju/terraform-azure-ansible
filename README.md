@@ -1,6 +1,21 @@
 # Azure + Terraform + Ansible playbook with service discovery
 
-This is an example integrated Provisioning + Config Management and Deployment flow.
+This is an example integrated Provisioning + Config Management and Deployment flow. 
+
+* Provisions dependencies for two tier app using terraform and tags them appropriately ( Web, APP.. etc)
+* Runs config management with Service discovery for Web server ( Nginx for Static file serving and Proxy Pass )
+* Installs and configures tomcat8 and dependencies on APP and on the web installs nginx and deploys static files + appropriate discovered APP nodes for proxypass
+* Number of Instances can be controlled through a single parameter in variables.tf ( for eg.. repeatcount=4 ) would deploy 4 sets of app and Web tier
+* A tied together script ( to integrate all ) which can be run manually with parameters OR can be integrated with Jenkins easily
+
+## To Do
+
+* Need to separate resources for  Security group for web and app ( currently shared)
+* APP tier doesnt need a public IP ( Currently provisioned for easier config management as we dont have a Management host yet)
+* Separate resource count for app and web is ideal ( currently repeat count = 4 deploys 4 app and 4 web )
+* A Load balancer resource would be nice to have
+* JAVA GC parameters and Xmx and Xms values should be dynamically calculated and populated as a part of config management ( for eg.. on cloud VM with 4 GB should have Xmx to be set to 3 Gigs and 8GB should be set to 6.5 Gigs)
+
 
 ## Dependencies
 * terraform 11.X Download appropriate build from https://releases.hashicorp.com/terraform/0.11.14/ ( Please note recent terraform version 12 is not tested and may not work .. yet)
@@ -8,6 +23,10 @@ This is an example integrated Provisioning + Config Management and Deployment fl
 * ansible['azure'] module 
 * Tested in Ubuntu Latest and OSx
 * Azure account with service principle configured
+
+
+
+* SG is shared
 
 ## Fastest way to get going..
 
