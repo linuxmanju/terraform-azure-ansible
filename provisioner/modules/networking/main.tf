@@ -16,6 +16,7 @@ resource "azurerm_subnet" "companynews_myproj_subnet" {
     address_prefix       = "${cidrsubnet("${var.vnet_address_space}",8,1)}"
 }
 
+
 resource "azurerm_network_security_group" "companynews_app_sg" {
     name                = "companynews_app_sg_${var.prefix}"
     location            = "${var.location}"
