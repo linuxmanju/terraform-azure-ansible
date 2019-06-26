@@ -43,7 +43,7 @@ If you want to get your hand dirty setting up everything from scratch, continue 
 * Azure account with service principle configured
 
 
-## Fastest way to get going..
+## Second Fastest way to get started + Getting hands dirty
 
 Docker image which I have built has all the dependencies installed ( terraform, ansible , az cli.. etc).. all you need to do is do below..
 
